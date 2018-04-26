@@ -31,3 +31,46 @@
        @section('content')
 
        @endsection
+
+
+////....Migration...
+
+1- .env stand for enviroment.
+    ..note. https://github.com/vlucas/phpdotenv
+
+1- migration 
+
+    public function up()
+            {
+//static method with Schima class...//Table name (users)...//convert database to $table object
+            Schema::create('users', function (Blueprint $table) {
+                $table->increments('id');
+             ////$object->method('variable)  
+                $table->string('name');
+                $table->string('email')->unique();
+                $table->string('password');
+                $table->rememberToken();
+                $table->timestamps();
+            });
+        }
+
+2- use $php artisan migrate
+
+3- to make migration table for posts
+    $ php artisan make:migration create_posts_table --create="posts"
+    $ php artisan migrate
+    $ php artisan migrate:rollback
+
+4- creat or adding columns
+    $ php artisan make:migration add_is_admin_column_to_posts_table --table="posts" 
+    
+ -  then goto migration and edite the created migration
+
+    //up
+    $table->integer('is_admin')->unsigned(); 
+    //unsigned mean that it cannot be a -ve number
+
+    //down
+    $table->dropColumn('is_admin')
+
+ -  then $php artisan migrate
