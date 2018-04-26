@@ -1,0 +1,33 @@
+
+1- ////..Pasing Data Into Controller
+
+   // in PostsController
+
+        public function index(id)
+        {
+            return 'welcome to posts'.id;
+        }
+
+    // in routers
+
+        Route::get('/post/{id}', 'PostsController@index');
+
+2- // Using all resource method in Controller
+   
+   insted of using..
+   Route::get('/post/{id}', 'PostsController@index');
+
+   Use..
+   Route::resource('posts', 'PostsController');
+
+   $php artisan rout:list
+
+
+////...Using Balde Templet
+
+1- creat folder (layouts) under (view) then add the following file (app.blade.ph)
+   @yield('content')
+   @extend('layouts.app')
+       @section('content')
+
+       @endsection
