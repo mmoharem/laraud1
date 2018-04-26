@@ -7,11 +7,14 @@
 
 
     @if(count($people > 0))
-       
-        @foreach($people as $person)
-        
 
+        <ul>
+            @foreach($people as $person)
+            
+                <li>{{$person}}</li>
 
+            @endforeach
+        </ul>
     
     @endif
 
@@ -19,8 +22,9 @@
 @endsection {{-- or @stop --}}
 
 
+
 @section('footer')
 
-    <script>alert('Hello vistor')</script>
+    {{-- <script>alert('Hello vistor')</script> --}}
 
 @stop
