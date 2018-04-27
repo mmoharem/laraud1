@@ -67,10 +67,14 @@
  -  then goto migration and edite the created migration
 
     //up
-    $table->integer('is_admin')->unsigned(); 
+    //$table->integer('is_admin')->unsigned(); 
     //unsigned mean that it cannot be a -ve number
+
+    use this instead $table->tinyInteger('is_admin')->default(0);
 
     //down
     $table->dropColumn('is_admin')
 
  -  then $php artisan migrate
+
+ -  to delet all database tables $php artisan migrate:reset
