@@ -78,3 +78,24 @@
  -  then $php artisan migrate
 
  -  to delet all database tables $php artisan migrate:reset
+
+
+ ///.. Database Eloguent/ORM....
+
+ 1- creating model
+    $ php artisan make:model Post
+
+  - laravel will creat a model with class Post then converts it to posts which is our table name.
+    .Note.. if you want the table have another name than the model add the following code to the model
+        protected $table = 'the table name';
+
+  - also the default $primeryKey is = 'id'
+    .Note.. if your primeryKey is deferent you have to define it by adding
+        protected $primaryKey = 'post_id';
+
+2- to use create for database we must goto the model and the following
+
+        protected $fillable = [
+            'title',
+            'body'
+        ]

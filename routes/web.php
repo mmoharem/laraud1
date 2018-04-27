@@ -1,5 +1,6 @@
 <?php
 
+use App\Post;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,7 +32,7 @@
 
 //     //using static method from the database class
 
-//     DB::insert('insert into posts(title, body) values(?, ?)', ['PHP with Laravel', 'Laravel is the best thing happend to PHP']);
+//     DB::insert('insert into posts(title, body) values(?, ?)', ['Post Two', 'This is post tow']);
 
 // });
 
@@ -53,7 +54,85 @@
 
 // });
 
-Route::get('/delete', function() {
-    $deleted = DB::delete('delete from posts where id = ?', [2]);
-    return $deleted;
-});
+// Route::get('/delete', function() {
+//     $deleted = DB::delete('delete from posts where id = ?', [2]);
+//     return $deleted;
+// });
+
+
+/*
+|--------------------------------------------------------------------------
+| Eloquent object relational model(ORM)
+|--------------------------------------------------------------------------
+*/
+
+// Route::get('/read', function() {
+//     $posts = Post::all();
+
+//     foreach($posts as $post){
+//         return $post->title;
+//     }
+// });
+
+
+// //Find By id
+// Route::get('/find', function() {
+//     $post = Post::find(3);
+
+//         return $post->title;
+   
+// });
+
+//Find where
+
+// Route::get('/findwhere', function() {
+//     $posts = Post::where('id', 3)->orderBy('id', 'desc')->get();
+//     return $posts;
+// });
+
+// Find More
+
+// Route::get('/findmore', function(){
+
+//     // $posts = Post::findOrFail(3);
+//     // return $posts;
+   
+//     $posts = Post::where('users_count', '<', 50)->firstOrFail();
+
+
+// });
+
+//Inserting
+    // Route::get('/basicinsert', function() {
+
+    //     $post = new Post;
+
+    //     $post->title = 'Post Three';
+    //     $post->body = 'This is post three';
+
+    //     $post->save();
+
+    // });
+
+//Update
+    // Route::get('/basicupdate', function() {
+
+    //     $post = Post::find(1);
+
+    //     $post->title = 'Post One';
+    //     $post->body = 'This is post one';
+
+    //     $post->save();
+
+    // });
+
+    //Create
+
+    Route::get('/create', function() {
+
+        Post::create([
+            'title' => 'Post Three',
+            'body' => 'This is post three'
+        ]);
+
+    });
