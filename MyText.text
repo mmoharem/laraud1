@@ -117,3 +117,46 @@
 
     //down
     $table->dropColumn('deleted_at');
+
+///.. DB Eloquent Relationship
+
+1- go the post migration file and add
+
+   $table->integer('user_id')->unsigned();
+   at the teriminal run
+   $ php artisan migrate:refresh
+
+2- go to the user model and add the following
+
+    // ...One to One relationship.
+    public function post() {
+        return $this->hasOne('App\Post'); //hasone relation 
+    }
+    //this function will automaticaly look for user_id in Post model
+    //..Note. If you name user_id with different name you mast add to the functin as second parameter
+        also if you have a different id name for the post table you must specify as thierd parameter
+        E.X: return $this->hasOne('App\Post', 'user_id', 'id');
+
+
+    // ....The inverse relationship.
+    public function user() {
+        return $this->belongsTo('App\User');
+    }
+
+    //.....One to Many relationship
+    public function user() {
+        return $this->belongsTo('App\User');
+    }
+
+3- Many to many relationship
+
+ - creating pivot table: we have to create three tables
+ a) users table.
+ b) rols table.
+    $ php artisan make:model Role -m
+ c) pivote table, user_id 
+    to make pivote use artisan with the Roles and Users tables.
+    $ php artisan make:migration create_users_roles_table --create=role_user
+
+ - then goto edite the two table created by migration
+   $ php artisan migate

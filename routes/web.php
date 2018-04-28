@@ -1,6 +1,7 @@
 <?php
 
 use App\Post;
+use App\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -131,12 +132,22 @@ use App\Post;
     // Route::get('/create', function() {
 
     //     Post::create([
-    //         'title' => 'Post Four',
-    //         'body' => 'This is post Four'
+    //         'title' => 'Post One',
+    //         'content' => 'This is post One'
+    //         'user_id' => ''
     //     ]);
 
     // });
 
+
+    /////////craete user
+    // Route::get('/create-user', function(){
+    //     User::create([
+    //         'name' => 'admin',
+    //         'email' => 'admin@lara.com',
+    //         'password' => 'momast5546'
+    //     ]);
+    // });
 
     //.....................Update
     // Route::get('/update', function() {
@@ -202,4 +213,39 @@ use App\Post;
     //     Post::withTrashed()->where('is_admin',0)->forceDelete();
     // });
 
+
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | RelationShip in Eloquent object relational model(ORM)
+    |--------------------------------------------------------------------------
+    */
+
+    // One to One relationship.
+    // Route::get('/user/{id}/post', function($id) {
+    //     return User::find($id)->post;
+    //     return User::find($id)->post->title;
+                        
+    // });
+
+    // The inverse relationship.
+    // Route::get('/post/{id}/user', function($id) {
+    //     return Post::find($id)->user->name;
+    // });
     
+
+    // One to Many relationship.
+    // Route::get('/posts', function() {
+
+    //     $user = User::find(1);
+
+    //     foreach($user->posts as $post){
+    //         echo $post->title."<br>";
+    //     }
+
+    // });
+
+
+    // Many To Many Relationship
+
