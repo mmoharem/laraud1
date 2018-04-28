@@ -114,7 +114,7 @@ use App\Post;
 
     // });
 
-//Update
+//..............Update
     // Route::get('/basicupdate', function() {
 
     //     $post = Post::find(1);
@@ -126,13 +126,80 @@ use App\Post;
 
     // });
 
-    //Create
+    //..................Create
 
-    Route::get('/create', function() {
+    // Route::get('/create', function() {
 
-        Post::create([
-            'title' => 'Post Three',
-            'body' => 'This is post three'
-        ]);
+    //     Post::create([
+    //         'title' => 'Post Four',
+    //         'body' => 'This is post Four'
+    //     ]);
 
-    });
+    // });
+
+
+    //.....................Update
+    // Route::get('/update', function() {
+
+    //     Post::where('id', 2)->where('is_admin', 0)->update([
+    //         'title' => 'Updated Post Two',
+    //         'body'  => 'This is updated post tow'
+    //     ]);
+
+    // });
+
+    //...........................Delete
+    // Route::get('/delete', function(){
+
+    //     $post = Post::find(3);
+    //     $post->delete();
+    // });
+
+    //..................Other way to delete
+    // Route::get('/delete2', function(){
+    //     Post::destroy(2);
+    // });
+
+    // .................To delete more than on 
+
+    // Route::get('/delete3', function(){
+    //     Post::destroy([4,5]);
+    // });
+    
+
+    // ...............Soft Delete
+
+    // Route::get('/softdelete', function() {
+
+    //     Post::find(6)->delete();
+
+    // });
+
+    //...............Read Soft Delete
+
+    // Route::get('/raedsoftdel', function() {
+
+    //     // $post = Post::find(1);
+    //     // return $post;
+
+    //     $post = Post::withTrashed()->where('id', 1)->get();
+    //     return $post;
+
+    //     $post = Post::onlyTrashed()->where('is_admin', 0)->get();
+    //     return $post;
+
+    // });
+
+    // //.................... Restored Trashed Items
+
+    // Route::get('/restore', function(){
+    //     Post::withTrashed()->where('is_admin',0)->restore();
+    // });
+
+    //....................Force Delete Permenantly
+
+    // Route::get('/forcedel', function(){
+    //     Post::withTrashed()->where('is_admin',0)->forceDelete();
+    // });
+
+    

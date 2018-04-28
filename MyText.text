@@ -99,3 +99,21 @@
             'title',
             'body'
         ]
+
+    ..Note. we make to methods sav() and create()
+
+3- Soft Delete with Trash. son in post model do the following
+    a) add..  use Illuminate\Database\Eloquent\SoftDelete;
+    b) at the post class add..  use SoftDelete;
+    c) then add... protected $dates = ['deleted_at'];
+
+ - the goto cmd and run
+    $ php artisan make:migration add_deleted_at_column_to_posts_tables --table=posts
+
+ - at the migrate created add the following
+
+    //up
+    $table->softDelete();
+
+    //down
+    $table->dropColumn('deleted_at');
