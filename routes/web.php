@@ -3,6 +3,10 @@
 use App\Post;
 use App\User;
 use App\Role;
+use App\Country;
+use App\Photo;
+use App\Videao;
+use App\Tag;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -250,26 +254,95 @@ use App\Role;
 
     // Many To Many Relationship
 
-    Route::get('/user/{id}/role', function($id){ 
-    //    $user = User::find($id);
+    // Route::get('/user/{id}/role', function($id){ 
+    // //    $user = User::find($id);
         
+    // //     foreach($user->roles as $role) {
+    // //         return $role->name;
+    // //     }
+    // //  other way
+    //     $user = User::find()->roles()->orderBy('id', 'desc')->get();
+    //     return $user;
+    // });
+
+    // // Accessing the Intermediate table (the pivote table)
+
+    // Route::get('user/pivot', function() {
+
+    //     $user = User::find(1);
+
     //     foreach($user->roles as $role) {
-    //         return $role->name;
+    //         echo $role->pivot->created_at;
     //     }
-    //  other way
-        $user = User::find()->roles()->orderBy('id', 'desc')->get();
-        return $user;
-    });
 
-    // Accessing the Intermediate table (the pivote table)
+    // });
 
-    Route::get('user/pivot', function() {
 
-        $user = User::find(1);
+    //.Has Many Through Relation
 
-        foreach($user->roles as $role) {
-            echo $role->pivot->created_at;
+    // Route::get('/user/country', function() {
+
+    //    $country = Country::find(5);
+
+    //     foreach($country->posts as $post) {
+    //         return $post->title;
+    //     }
+    // });
+
+        
+    //Polymorphic Relations
+
+    // Route::get('/user/photo', function() {
+
+    //     $user = User::find(1);
+
+    //     foreach($user->photos as $photo) {
+    //         // return $photo;
+    //         echo $photo->path;
+    //     }
+
+    // });
+
+    // Route::get('/post/photo', function() {
+
+    //     $post = Post::find(1);
+
+    //     foreach($post->photos as $photo) {
+    //         echo $photo->path.'<br>';
+
+    //     }
+
+    // });
+
+    // //Inverse Polymorphic Relations
+
+    // Route::get('/photo/{id}/post', function($id){
+
+    //     $photo = Photo::findOrFail($id);
+
+    //     return $photo->imageable;
+
+    // });
+
+
+    //Polymorhpic Many to Many
+
+    // Route::get('/post/tag', function() {
+    //     $post = Post::find(1);
+
+    //     foreach($post->tags as $tag) {
+    //         echo $tag->name;
+    //     }
+    // });
+
+    Route::get('/tag/post', function() {
+
+        $tag = Tag::find(2);
+
+        foreach($tag->posts as $post) {
+            return $post->title;
         }
 
+        // return $tag;
     });
 
