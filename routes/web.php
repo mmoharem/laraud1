@@ -2,6 +2,7 @@
 
 use App\Post;
 use App\User;
+use App\Role;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -248,4 +249,27 @@ use App\User;
 
 
     // Many To Many Relationship
+
+    Route::get('/user/{id}/role', function($id){ 
+    //    $user = User::find($id);
+        
+    //     foreach($user->roles as $role) {
+    //         return $role->name;
+    //     }
+    //  other way
+        $user = User::find()->roles()->orderBy('id', 'desc')->get();
+        return $user;
+    });
+
+    // Accessing the Intermediate table (the pivote table)
+
+    Route::get('user/pivot', function() {
+
+        $user = User::find(1);
+
+        foreach($user->roles as $role) {
+            echo $role->pivot->created_at;
+        }
+
+    });
 
